@@ -1,0 +1,49 @@
+{
+  "name": "tanstack-start-tailwind-v4",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && tsc --noEmit",
+    "start": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.5",
+    "@openai/agents": "^0.1.1",
+    "@openai/agents-realtime": "^0.1.1",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tanstack/react-router": "^1.131.36",
+    "@tanstack/react-router-devtools": "^1.131.36",
+    "@tanstack/react-start": "^1.131.36",
+    "@types/canvas-confetti": "^1.9.0",
+    "@untitledui/file-icons": "^0.0.9",
+    "@untitledui/icons": "^0.0.19",
+    "canvas-confetti": "^1.9.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.543.0",
+    "openai": "^5.20.0",
+    "powerglitch": "^2.5.0",
+    "react": "^19.0.0",
+    "react-aria-components": "^1.12.1",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-react-aria-components": "^2.0.1",
+    "zod": "3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.6",
+    "@types/node": "^22.5.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "tailwindcss": "^4.1.6",
+    "tw-animate-css": "^1.3.8",
+    "typescript": "^5.7.2",
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

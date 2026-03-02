@@ -1,72 +1,189 @@
-# Welcome to TanStack.com!
+# WebRTC Real-Time AI Interface
 
-This site is built with TanStack Router!
+## Introduction
 
-- [TanStack Router Docs](https://tanstack.com/router)
+This application demonstrates a browser-based real-time communication system powered by WebRTC and an AI backend. The platform enables live audio streaming and structured data exchange between a web client and an AI service using a signaling server.
 
-It's deployed automagically with Netlify!
+The goal of this project is to showcase how low-latency voice interaction and browser-level control can be achieved through modern WebRTC architecture.
 
-- [Netlify](https://netlify.com/)
+---
 
-## Development
+## Architecture Overview
 
-From your terminal:
+The system consists of three primary components:
 
-```sh
-pnpm install
-pnpm dev
+* Frontend (HTML, JavaScript, CSS)
+* Backend signaling server (Java or Python implementation)
+* OpenAI Realtime API endpoint
+
+The backend handles SDP negotiation and session initialization, while the browser manages media capture and real-time communication.
+
+---
+
+## Core Features
+
+### 1. Live Audio Streaming
+
+* Captures microphone input from the browser
+* Streams audio to the AI service in real time
+* Receives streamed AI-generated audio responses
+* Maintains low-latency interaction
+
+### 2. Data Channel Messaging
+
+* Establishes a reliable WebRTC Data Channel
+* Sends structured JSON messages
+* Receives AI-generated structured responses
+* Enables command-driven browser interactions
+
+---
+
+## Browser Interaction Capabilities
+
+The demo includes dynamic browser control through the Data Channel. Supported interactions include:
+
+* Retrieving HTML content
+* Updating background color
+* Changing font styles
+* Adjusting button size
+* Modifying button color
+
+These actions are triggered by structured messages exchanged over WebRTC.
+
+---
+
+## Connection Lifecycle
+
+### Step 1: Session Initialization
+
+The browser generates an SDP offer and sends it to the backend signaling endpoint.
+
+### Step 2: Backend Negotiation
+
+The backend forwards the offer to the AI endpoint and retrieves an SDP answer.
+
+### Step 3: SDP Exchange
+
+The backend returns the SDP answer to the browser.
+
+### Step 4: WebRTC Establishment
+
+The browser:
+
+* Applies the remote SDP
+* Establishes ICE connectivity
+* Negotiates audio and data channels
+
+### Step 5: Active Real-Time Session
+
+Once connected:
+
+* Audio streams bidirectionally
+* Data Channel exchanges structured messages
+* AI-driven browser updates occur in real time
+
+---
+
+## Project Directory Structure
+
+```
+front/              Frontend assets
+java_backend/       Java signaling server
+python_backend/     Python signaling server
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+Either backend can be used depending on deployment preference.
 
-## Editing and previewing the docs of TanStack projects locally
+---
 
-The documentations for all TanStack projects except for `React Charts` are hosted on [https://tanstack.com](https://tanstack.com), powered by this TanStack Router app.
-In production, the markdown doc pages are fetched from the GitHub repos of the projects, but in development they are read from the local file system.
+## Setup Instructions
 
-Follow these steps if you want to edit the doc pages of a project (in these steps we'll assume it's [`TanStack/form`](https://github.com/tanstack/form)) and preview them locally :
+### 1. Install Dependencies
 
-1. Create a new directory called `tanstack`.
+From the project root:
 
-```sh
-mkdir tanstack
+```
+npm install
 ```
 
-2. Enter the directory and clone this repo and the repo of the project there.
+For Java backend:
 
-```sh
-cd tanstack
-git clone git@github.com:TanStack/tanstack.com.git
-git clone git@github.com:TanStack/form.git
+```
+mvn clean install
 ```
 
-> [!NOTE]
-> Your `tanstack` directory should look like this:
->
-> ```
-> tanstack/
->    |
->    +-- form/
->    |
->    +-- tanstack.com/
-> ```
+For Python backend:
 
-> [!WARNING]
-> Make sure the name of the directory in your local file system matches the name of the project's repo. For example, `tanstack/form` must be cloned into `form` (this is the default) instead of `some-other-name`, because that way, the doc pages won't be found.
-
-3. Enter the `tanstack/tanstack.com` directory, install the dependencies and run the app in dev mode:
-
-```sh
-cd tanstack.com
-pnpm i
-# The app will run on https://localhost:3000 by default
-pnpm dev
+```
+pip install -r requirements.txt
 ```
 
-4. Now you can visit http://localhost:3000/form/latest/docs/overview in the browser and see the changes you make in `tanstack/form/docs`.
+---
 
-> [!NOTE]
-> The updated pages need to be manually reloaded in the browser.
+### 2. Configure Environment
 
-> [!WARNING]
-> You will need to update the `docs/config.json` file (in the project's repo) if you add a new doc page!
+Set your OpenAI API key as an environment variable:
+
+```
+OPENAI_API_KEY=your_api_key_here
+```
+
+Ensure the frontend base URL matches your backend server address.
+
+---
+
+### 3. Run the Application
+
+Frontend (development mode):
+
+```
+npm run dev
+```
+
+Java backend:
+
+```
+mvn spring-boot:run
+```
+
+Python backend:
+
+```
+python WebRTC.py
+```
+
+---
+
+## Security Recommendations
+
+* Store API keys in environment variables
+* Do not commit secrets to version control
+* Exclude build artifacts and IDE files via `.gitignore`
+
+Suggested `.gitignore` entries:
+
+```
+.idea/
+target/
+__pycache__/
+*.iml
+desktop.ini
+```
+
+---
+
+## Potential Extensions
+
+This foundation can be extended to support:
+
+* AI voice assistants
+* Browser automation tools
+* Real-time transcription systems
+* AI-powered live dashboards
+* Interactive learning applications
+
+---
+
+## Summary
+
+This project provides a structured implementation of WebRTC-based real-time communication between a browser and an AI service. It demonstrates how audio streaming and structured messaging can be combined to create responsive, intelligent, voice-enabled web applications.
